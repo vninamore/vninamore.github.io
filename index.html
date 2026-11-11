@@ -1,0 +1,286 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Portafolio de Vanessa Nina More: GIS, análisis de datos, Python, SQL, automatización y ciencia de datos.">
+  <meta name="theme-color" content="#07111f">
+  <title>Vanessa Nina More | GIS & Data</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="noise" aria-hidden="true"></div>
+  <header class="topbar" id="topbar">
+    <a class="brand" href="#inicio" aria-label="Ir al inicio">
+      <span class="brand-mark">VN</span>
+      <span>Vanessa Nina More</span>
+    </a>
+    <nav class="nav" aria-label="Navegación principal">
+      <a href="#perfil" data-i18n="navProfile">Perfil</a>
+      <a href="#proyectos" data-i18n="navProjects">Proyectos</a>
+      <a href="#experiencia" data-i18n="navExperience">Experiencia</a>
+      <a href="#contacto" data-i18n="navContact">Contacto</a>
+    </nav>
+    <div class="nav-actions">
+      <button class="icon-button" id="langToggle" type="button" aria-label="Cambiar idioma">EN</button>
+      <button class="icon-button" id="themeToggle" type="button" aria-label="Cambiar tema">☼</button>
+      <button class="menu-button" id="menuToggle" type="button" aria-label="Abrir menú">☰</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero section" id="inicio">
+      <div class="hero-copy reveal">
+        <div class="eyebrow"><span class="status-dot"></span><span data-i18n="available">Disponible para oportunidades remotas</span></div>
+        <p class="hero-kicker">GIS · DATA · AUTOMATION</p>
+        <h1><span data-i18n="hello">Hola, soy</span> <span class="gradient-text">Vanessa.</span></h1>
+        <p class="hero-role" data-i18n="role">Ingeniera Geográfica · Analista GIS & Data</p>
+        <p class="hero-intro" data-i18n="heroIntro">Transformo datos geoespaciales complejos en información clara, procesos automáticos y soluciones que ayudan a tomar mejores decisiones.</p>
+        <div class="hero-actions">
+          <a class="button primary" href="#proyectos"><span data-i18n="explore">Explorar proyectos</span><span aria-hidden="true">↘</span></a>
+          <a class="button ghost" href="mailto:vninamore@gmail.com"><span data-i18n="contactMe">Contactarme</span></a>
+        </div>
+        <div class="hero-meta">
+          <div><strong>3</strong><span data-i18n="years">años de experiencia</span></div>
+          <div><strong>GIS</strong><span>ArcGIS · QGIS · GeoServer</span></div>
+          <div><strong>DATA</strong><span>Python · SQL · PostGIS</span></div>
+        </div>
+      </div>
+
+      <div class="geo-console reveal" aria-label="Visualización geoespacial interactiva">
+        <div class="console-head">
+          <div>
+            <span class="console-label">GEO DATA LAB</span>
+            <strong data-i18n="spatialView">Visor espacial</strong>
+          </div>
+          <div class="window-dots" aria-hidden="true"><i></i><i></i><i></i></div>
+        </div>
+        <div class="map-stage" id="mapStage">
+          <svg viewBox="0 0 620 480" role="img" aria-labelledby="mapTitle mapDesc">
+            <title id="mapTitle">Visualización geoespacial conceptual del Perú</title>
+            <desc id="mapDesc">Capas interactivas de observaciones, rutas y cambio de cobertura.</desc>
+            <defs>
+              <linearGradient id="land" x1="0" x2="1" y1="0" y2="1">
+                <stop offset="0" stop-color="#15324a"/><stop offset="1" stop-color="#0d1e34"/>
+              </linearGradient>
+              <filter id="glow"><feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+            </defs>
+            <g class="grid-lines" aria-hidden="true">
+              <path d="M0 80H620M0 160H620M0 240H620M0 320H620M0 400H620"/>
+              <path d="M100 0V480M200 0V480M300 0V480M400 0V480M500 0V480"/>
+            </g>
+            <path class="country" d="M211 31L264 45 285 79 318 96 305 132 327 166 305 198 316 230 287 265 292 297 266 328 270 370 248 414 222 449 207 418 203 383 183 351 187 315 168 282 177 245 158 211 174 175 166 142 184 111 181 78Z"/>
+            <g class="layer layer-change active" data-layer="change">
+              <path class="change-zone" d="M253 188l36 14 4 38-30 30-35-13-4-41z"/>
+              <path class="change-zone secondary" d="M213 282l43 12 5 36-35 26-28-18 1-35z"/>
+            </g>
+            <g class="layer layer-routes active" data-layer="routes">
+              <path class="route" d="M209 91C254 133 215 175 278 211S244 294 251 388"/>
+              <circle class="route-node" cx="209" cy="91" r="5"/><circle class="route-node" cx="278" cy="211" r="5"/><circle class="route-node" cx="251" cy="388" r="5"/>
+            </g>
+            <g class="layer layer-points active" data-layer="points">
+              <circle cx="209" cy="91" r="7"/><circle cx="232" cy="142" r="5"/><circle cx="278" cy="211" r="8"/><circle cx="232" cy="278" r="5"/><circle cx="251" cy="388" r="7"/>
+            </g>
+          </svg>
+          <div class="map-readout">
+            <span>LAT <b id="latValue">-12.0464</b></span>
+            <span>LON <b id="lonValue">-77.0428</b></span>
+            <span>EPSG <b>4326</b></span>
+          </div>
+        </div>
+        <div class="layer-controls" role="group" aria-label="Capas del mapa">
+          <button class="layer-toggle active" type="button" data-target="points"><span class="legend point"></span><span data-i18n="observations">Observaciones</span></button>
+          <button class="layer-toggle active" type="button" data-target="routes"><span class="legend line"></span><span data-i18n="routes">Rutas</span></button>
+          <button class="layer-toggle active" type="button" data-target="change"><span class="legend area"></span><span data-i18n="coverage">Cambio de cobertura</span></button>
+        </div>
+      </div>
+    </section>
+
+    <section class="section profile" id="perfil">
+      <div class="section-heading reveal">
+        <p class="section-index">01 / PROFILE</p>
+        <h2 data-i18n="profileTitle">Entre mapas, código y decisiones.</h2>
+        <p data-i18n="profileText">Combino ingeniería geográfica, análisis de datos y automatización para encontrar patrones, mejorar la calidad de la información y convertir procesos manuales en flujos reproducibles.</p>
+      </div>
+      <div class="profile-grid">
+        <article class="profile-card wide reveal">
+          <span class="card-number">01</span>
+          <div class="orbit-icon" aria-hidden="true"><i></i><b>GIS</b></div>
+          <h3 data-i18n="geoTitle">Pensamiento geoespacial</h3>
+          <p data-i18n="geoText">Análisis vectorial y ráster, cartografía, sistemas de coordenadas, publicación web y control de calidad.</p>
+        </article>
+        <article class="profile-card reveal">
+          <span class="card-number">02</span>
+          <div class="code-icon" aria-hidden="true">{ }</div>
+          <h3 data-i18n="automationTitle">Automatización</h3>
+          <p data-i18n="automationText">Python, ArcPy y GeoPandas para reducir tareas repetitivas y construir procesos confiables.</p>
+        </article>
+        <article class="profile-card reveal">
+          <span class="card-number">03</span>
+          <div class="code-icon data-icon" aria-hidden="true">SQL</div>
+          <h3 data-i18n="dataTitle">Datos con propósito</h3>
+          <p data-i18n="dataText">SQL, PostgreSQL/PostGIS y validaciones para integrar, consultar y reportar información de calidad.</p>
+        </article>
+      </div>
+
+      <div class="stack reveal">
+        <p data-i18n="toolbox">Caja de herramientas</p>
+        <div class="marquee" aria-label="Tecnologías">
+          <div class="marquee-track">
+            <span>Python</span><span>SQL</span><span>PostgreSQL</span><span>PostGIS</span><span>ArcGIS Pro</span><span>QGIS</span><span>GeoServer</span><span>Google Earth Engine</span><span>TensorFlow</span><span>Keras</span>
+            <span>Python</span><span>SQL</span><span>PostgreSQL</span><span>PostGIS</span><span>ArcGIS Pro</span><span>QGIS</span><span>GeoServer</span><span>Google Earth Engine</span><span>TensorFlow</span><span>Keras</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section projects" id="proyectos">
+      <div class="section-heading reveal">
+        <p class="section-index">02 / SELECTED WORK</p>
+        <h2 data-i18n="projectsTitle">Proyectos que conectan territorio y datos.</h2>
+        <p data-i18n="projectsText">Una selección de trabajos en automatización GIS, teledetección, ciencia de datos y fotogrametría.</p>
+      </div>
+      <div class="filters reveal" role="group" aria-label="Filtrar proyectos">
+        <button class="filter active" type="button" data-filter="all" data-i18n="all">Todos</button>
+        <button class="filter" type="button" data-filter="gis">GIS</button>
+        <button class="filter" type="button" data-filter="data">Data Science</button>
+        <button class="filter" type="button" data-filter="automation" data-i18n="automation">Automatización</button>
+        <button class="filter" type="button" data-filter="rpas">RPAS</button>
+      </div>
+      <div class="project-grid" id="projectGrid">
+        <article class="project-card feature reveal" data-category="data gis" data-project="deforestation" tabindex="0">
+          <div class="project-visual deforestation-visual">
+            <div class="scan-line"></div>
+            <div class="patch p1"></div><div class="patch p2"></div><div class="patch p3"></div><div class="patch p4"></div>
+            <span class="visual-label">SENTINEL-2 · 2019—2021</span>
+          </div>
+          <div class="project-body">
+            <div class="project-tags"><span>ConvLSTM</span><span>Sentinel-2</span><span>Python</span></div>
+            <h3 data-i18n="deforestationTitle">Monitoreo de deforestación con Deep Learning</h3>
+            <p data-i18n="deforestationText">Modelo temporal para detectar patrones de pérdida de cobertura en La Pampa, Madre de Dios.</p>
+            <div class="project-stats"><span><b>500</b> patches</span><span><b>36</b> meses</span><span><b>5</b> bandas</span></div>
+            <button class="text-link open-project" type="button"><span data-i18n="viewCase">Ver caso</span> ↗</button>
+          </div>
+        </article>
+
+        <article class="project-card reveal" data-category="automation gis" data-project="cartography" tabindex="0">
+          <div class="project-visual cartography-visual">
+            <div class="paper-map"><i></i><i></i><i></i><b>KMZ</b></div>
+            <div class="flow-dots"><i></i><i></i><i></i></div>
+          </div>
+          <div class="project-body">
+            <div class="project-tags"><span>ArcPy</span><span>Python</span><span>ArcMap</span></div>
+            <h3 data-i18n="cartographyTitle">Automatización cartográfica censal</h3>
+            <p data-i18n="cartographyText">Generación automatizada de croquis, KML/KMZ, validaciones y reportes para proyectos nacionales.</p>
+            <button class="text-link open-project" type="button"><span data-i18n="viewCase">Ver caso</span> ↗</button>
+          </div>
+        </article>
+
+        <article class="project-card reveal" data-category="gis automation" data-project="platform" tabindex="0">
+          <div class="project-visual platform-visual">
+            <div class="mini-dashboard"><header></header><aside></aside><main><i></i><i></i><i></i></main></div>
+          </div>
+          <div class="project-body">
+            <div class="project-tags"><span>GeoServer</span><span>PostGIS</span><span>SQL</span></div>
+            <h3 data-i18n="platformTitle">Plataforma web de resultados geográficos</h3>
+            <p data-i18n="platformText">Servicios, capas y procedimientos almacenados para consultar, filtrar y descargar información validada.</p>
+            <button class="text-link open-project" type="button"><span data-i18n="viewCase">Ver caso</span> ↗</button>
+          </div>
+        </article>
+
+        <article class="project-card reveal" data-category="rpas gis" data-project="rpas" tabindex="0">
+          <div class="project-visual rpas-visual">
+            <div class="terrain"><i></i><i></i><i></i><i></i></div>
+            <div class="drone" aria-hidden="true">✦</div>
+            <span class="visual-label">DEM · 4.34 CM/PX</span>
+          </div>
+          <div class="project-body">
+            <div class="project-tags"><span>Metashape</span><span>RPAS</span><span>DEM</span></div>
+            <h3 data-i18n="rpasTitle">Flujo fotogramétrico de alta resolución</h3>
+            <p data-i18n="rpasText">Procesamiento optimizado de imágenes RPAS para modelos de elevación y productos cartográficos.</p>
+            <button class="text-link open-project" type="button"><span data-i18n="viewCase">Ver caso</span> ↗</button>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section experience" id="experiencia">
+      <div class="section-heading reveal">
+        <p class="section-index">03 / EXPERIENCE</p>
+        <h2 data-i18n="experienceTitle">Experiencia construyendo con datos reales.</h2>
+      </div>
+      <div class="timeline">
+        <article class="timeline-item reveal">
+          <div class="time-mark"><span></span></div>
+          <div class="time-period">3 <span data-i18n="yearsShort">años</span></div>
+          <div class="time-content">
+            <p>INEI · PERÚ</p>
+            <h3 data-i18n="ineiRole">Proyectos geoinformáticos y resultados censales</h3>
+            <p data-i18n="ineiText">Automatización Python/SQL, validación de información, bases espaciales, servicios GeoServer y soporte a módulos web para proyectos de alcance nacional.</p>
+          </div>
+        </article>
+        <article class="timeline-item reveal">
+          <div class="time-mark"><span></span></div>
+          <div class="time-period">2 <span data-i18n="months">meses</span></div>
+          <div class="time-content">
+            <p data-i18n="consulting">CONSULTORÍA</p>
+            <h3 data-i18n="photoRole">Fotogrametría y operación RPAS</h3>
+            <p data-i18n="photoText">Planificación y procesamiento con drones, GPS diferencial y producción de ortofotos, curvas de nivel y modelos 3D.</p>
+          </div>
+        </article>
+        <article class="timeline-item reveal">
+          <div class="time-mark"><span></span></div>
+          <div class="time-period" data-i18n="internships">Prácticas</div>
+          <div class="time-content">
+            <p>SUNARP · SEDAPAL</p>
+            <h3 data-i18n="internRole">Información territorial y soporte técnico</h3>
+            <p data-i18n="internText">Experiencia inicial en gestión territorial, datos geográficos y apoyo a procesos técnicos institucionales.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section education" id="formacion">
+      <div class="education-panel reveal">
+        <div>
+          <p class="section-index">04 / EDUCATION</p>
+          <h2 data-i18n="educationTitle">Aprender, experimentar, mejorar.</h2>
+        </div>
+        <div class="education-list">
+          <article><span>01</span><div><h3 data-i18n="degree">Bachiller en Ingeniería Geográfica</h3><p>Universidad Nacional Mayor de San Marcos</p></div></article>
+          <article><span>02</span><div><h3 data-i18n="specialization">Especialización en Ciencia de Datos</h3><p>Machine Learning · Deep Learning · LSTM · CNN</p></div></article>
+          <article><span>03</span><div><h3 data-i18n="continuous">Formación continua</h3><p>Data Engineering · Cloud · English for Tech</p></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section contact" id="contacto">
+      <div class="contact-panel reveal">
+        <p class="section-index">05 / CONTACT</p>
+        <h2 data-i18n="contactTitle">¿Construimos algo útil con datos?</h2>
+        <p data-i18n="contactText">Estoy abierta a oportunidades remotas en GIS, análisis de datos, automatización y proyectos geoespaciales.</p>
+        <a class="contact-email" href="mailto:vninamore@gmail.com">vninamore@gmail.com <span>↗</span></a>
+        <div class="social-links" aria-label="Perfiles profesionales">
+          <a href="https://github.com/vninamore" target="_blank" rel="noopener noreferrer">GitHub <span>↗</span></a>
+        </div>
+        <div class="contact-foot">
+          <span>Lima, Perú · UTC−5</span>
+          <span data-i18n="remote">Disponible para trabajo remoto</span>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <span>© <span id="year"></span> Vanessa Nina More</span>
+    <a href="#inicio" data-i18n="backTop">Volver arriba ↑</a>
+  </footer>
+
+  <dialog class="project-modal" id="projectModal">
+    <button class="modal-close" id="modalClose" type="button" aria-label="Cerrar">×</button>
+    <div id="modalContent"></div>
+  </dialog>
+  <div class="cursor-glow" id="cursorGlow" aria-hidden="true"></div>
+  <script src="script.js"></script>
+</body>
+</html>
